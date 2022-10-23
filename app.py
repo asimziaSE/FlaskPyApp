@@ -17,7 +17,8 @@ from azure.iot.hub import IoTHubRegistryManager
 MESSAGE_COUNT = 1
 MSG_TXT = "{\"Service Client Hydraulics Update C2D\": %.2f}"
 
-CONNECTION_STRING = "HostName=ADAM3600.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=ORKd4f9ro76W1M2uTXSp869Mrni7sz+4/gkEC/DuHU0="
+#CONNECTION_STRING = "HostName=ADAM3600.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=ORKd4f9ro76W1M2uTXSp869Mrni7sz+4/gkEC/DuHU0="
+CONNECTION_STRING = "HostName=ADAM3600.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=lsQVvrXgkumu25vlvYczR6BgCNpi1nK9SgykxCpEWlY="
 DEVICE_ID = "ADAM-3600"
 
 def iothub_run(dev_str, my_val):
