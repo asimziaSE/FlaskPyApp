@@ -1,0 +1,14 @@
+/*
+  Copyright (c) Microsoft Corporation.
+  Licensed under the MIT license.
+*/
+body {
+    background-color: #4a4f4d;
+}
+
+input [type="submit"] {
+    background-color: #de9918;
+    position: center;
+    height: 30px;
+    width: 10%;
+}

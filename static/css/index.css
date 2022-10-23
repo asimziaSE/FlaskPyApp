@@ -1,0 +1,34 @@
+/*
+  Copyright (c) Microsoft Corporation.
+  Licensed under the MIT license.
+*/
+h1 {
+    background-color: #c97a0a;
+    height: 75px;
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 14px;
+}
+
+header > p {
+    color: #FFFFFF;
+    font: bold 1.6em "segoe ui", arial, sans-serif;
+    margin: auto;
+    width: 50%;
+    padding-top: 20px;
+}
+
+main {
+    margin: 0 auto;
+    width: 100%;
+}
+input{
+    position:center;
+}
+button [type="submit"]
+{
+    background: #ffc107;
+    position:center;
+    height:30px;
+    width:10%;
+}
