@@ -68,19 +68,13 @@ def operator():
 def admin():
     return render_template('admin.html')
 
-@app.route('/control/')
+@app.route('/control/', methods=['GET', 'POST'])
 def control():
-    
-    return render_template('control.html')
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    '''Returns a static HTML page'''
     if request.method == 'POST':
         if request.form.get('b1') == 'START':
             iothub_run('START', 1)
             
-
         elif  request.form.get('b3') == 'STOP':
             iothub_run('STOP', 1)
     
@@ -97,6 +91,12 @@ def index():
             iothub_run('MQ157 MANUAL', 1)
         elif  request.form.get('b10') == 'MQ183-AUTOMATIC':
             iothub_run('MQ183 AUTOMATIC', 1)
+    
+    return render_template('control.html')
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    '''Returns a static HTML page'''
     return render_template('index.html')
 
 @app.route('/getembedinfo', methods=['GET'])

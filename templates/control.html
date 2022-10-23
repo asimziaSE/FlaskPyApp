@@ -8,24 +8,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/control.css') }}">
     <title>HydroVolta Dashboard</title>
 <body>
-<form method="post" action="/">
-            <input type="submit" value="START" name="b1" onsumbit="reutrn false"/>
+        <form method="post" action="/control/">
+            <input type="submit" value="START" name="b1"/>
         </form>
 
-        <form method="post" action="/">
+        <form method="post" action="/control/">
             <input type="submit" value="STOP" name="b3"/>
         </form>
 
-        <form method="post" action="/">
+        <form method="post" action="/control/">
             <input type="submit" value="RESET" name="b5"/>
         </form>
 
-        <form method="post" action="/">
+        <form method="post" action="/control/">
             <input type="submit" value="MQ269-FLUSH" name="b7"/>
             <input type="submit" value="MQ161-FORWARD" name="b8" />
         </form>
 
-        <form method="post" action="/">
+        <form method="post" action="/control/">
             <input type="submit" value="MQ157-MANUAL" name="b9"/>
             <input type="submit" value="MQ183-AUTOMATIC" name="b10" />
         </form>
