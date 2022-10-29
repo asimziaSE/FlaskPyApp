@@ -1,0 +1,56 @@
+body {
+    background: #f7f1e4;
+}
+h1 {
+    width: 100%;
+    background: #4f4d4b;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    font: 35px copperplate;
+}
+#report-container1{
+    margin:0 auto;
+}
+#bk {
+    background: none;
+    border: none;
+    color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+#control-button {
+    width: 100%;
+    margin-top:10px;
+    text-align:center;
+}
+#co {
+    background: none;
+    border-radius: 3px;
+    color: #4f4d4b;
+    padding: 10px;
+    font: 16px georgia;
+    border: 3px solid #ed8d0e;
+    transition:0.4s;
+}
+    #co:hover {
+        background: #ed8d0e;
+        color: white;
+    }
+header > p {
+    color: #FFFFFF;
+    font: bold 1.6em "segoe ui", arial, sans-serif;
+    margin: auto;
+    width: 50%;
+    padding-top: 20px;
+}
+
+main {
+    margin: 0 auto;
+    width: 100%;
+}
+input{
+    position:center;
+}

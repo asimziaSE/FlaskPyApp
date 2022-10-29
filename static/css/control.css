@@ -3,12 +3,164 @@
   Licensed under the MIT license.
 */
 body {
-    background-color: #4a4f4d;
+    background-color: #f7f7f2;
 }
 
-input [type="submit"] {
-    background-color: #de9918;
-    position: center;
-    height: 30px;
-    width: 10%;
+h1 {
+    width: 100%;
+    background: #4f4d4b;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    font: 35px copperplate;
 }
+#bk {
+    background: none;
+    border: none;
+    color: #fcba03;
+    margin-left: 20px;
+    margin-top:10px;
+}
+#report-container1 {
+    width: 55%;
+    background: #f7f7f2;
+    margin-top:50px;
+    float: left;
+    height: 350px;
+}
+@media only screen {
+    div#report-container1 {
+        height: 350px;
+    }
+}
+#button-container{
+    width:45%;
+    float:right;
+}
+#b1 {
+    max-width: 80px;
+    border: 0px;
+    padding:10px;
+    border-radius: 3px;
+    margin-left:50px;
+    margin-top:95px;
+    margin-bottom:10px;
+    background: #fcba03;
+    color: white;
+    font: 20px arial;
+    transition:0.8s;
+    box-shadow: rgba(133, 59, 5, 0.8) 3px 2px;
+}
+    #b1:hover {
+        background-color: #db7f23;
+        color: #545451;
+    }
+#b3 {
+    max-width: 80px;
+    border: 0px;
+    padding: 10px;
+    border-radius: 3px;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #fcba03;
+    color: white;
+    font: 20px arial;
+    transition: 0.8s;
+    box-shadow: rgba(133, 59, 5, 0.8) 3px 2px;
+}
+    #b3:hover {
+        background-color: #db7f23;
+        color: #545451;
+    }
+#b5 {
+    max-width: 80px;
+    border: 0px;
+    padding: 10px;
+    border-radius: 3px;
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #fcba03;
+    color: white;
+    font: 20px arial;
+    transition: 0.8s;
+    box-shadow: rgba(133, 59, 5, 0.8) 3px 2px;
+}
+    #b5:hover {
+        background-color: #db7f23;
+        color: #545451;
+    }
+#b7 {
+    max-width: 200px;
+    border: 0px;
+    padding: 10px;
+    border-radius: 3px;
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #fcba03;
+    color: white;
+    font: 20px arial;
+    transition: 0.8s;
+    box-shadow: rgba(133, 59, 5, 0.8) 3px 2px;
+}
+    #b7:hover {
+        background-color: #db7f23;
+        color: #545451;
+    }
+#b8 {
+    max-width: 200px;
+    border: 0px;
+    padding: 10px;
+    border-radius: 3px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #fcba03;
+    color: white;
+    font: 20px arial;
+    transition: 0.8s;
+    box-shadow: rgba(133, 59, 5, 0.8) 3px 2px;
+}
+    #b8:hover {
+        background-color: #db7f23;
+        color: #545451;
+    }
+#b9 {
+    max-width: 200px;
+    border: 0px;
+    padding: 10px;
+    border-radius: 3px;
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #fcba03;
+    color: white;
+    font: 20px arial;
+    transition: 0.8s;
+    box-shadow: rgba(133, 59, 5, 0.8) 3px 2px;
+}
+    #b9:hover {
+        background-color: #db7f23;
+        color: #545451;
+    }
+#b10 {
+    max-width: 200px;
+    border: 0px;
+    padding: 10px;
+    border-radius: 3px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #fcba03;
+    color: white;
+    font: 20px arial;
+    transition: 0.8s;
+    box-shadow: rgba(133, 59, 5, 0.8) 3px 2px;
+}
+    #b10:hover {
+        background-color: #db7f23;
+        color: #545451;
+    }

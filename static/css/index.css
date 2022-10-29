@@ -1,34 +1,60 @@
-/*
-  Copyright (c) Microsoft Corporation.
-  Licensed under the MIT license.
-*/
-h1 {
-    background-color: #c97a0a;
-    height: 75px;
-    width: 100%;
-    padding-left: 5px;
-    padding-top: 14px;
+body {
+    background: #f2f1ed;
 }
 
-header > p {
-    color: #FFFFFF;
-    font: bold 1.6em "segoe ui", arial, sans-serif;
-    margin: auto;
-    width: 50%;
-    padding-top: 20px;
+#header{
+    margin-top:70px;
+    text-align:center;
+    color:#074151;
+    font:bold 32px roboto;
+    text-transform:uppercase;
+    text-decoration:underline;
+}
+#Text {
+    margin-top: 50px;
+    text-align: center;
+    color: #074151;
+    font:bold 24px roboto;
+}
+#Text2 {
+    margin-top: 15px;
+    text-align: center;
+    color: #074151;
+    font:16px roboto;
+}
+#bttns{
+    margin-top:40px;
+    text-align:center;
+}
+#admin {
+    width: 220px;
+    margin-top: 10px;
+    background: #757573;
+    border-radius: 1px;
+    color: white;
+    padding: 10px;
+    font: 16px georgia;
+    border: none;
+    transition: 0.6s;
 }
 
-main {
-    margin: 0 auto;
-    width: 100%;
+    #admin:hover {
+        background: #ed8d0e;
+        color: white;
+    }
+#operator {
+    width: 220px;
+    margin-top: 20px;
+    background: #757573;
+    border-radius: 1px;
+    color: white;
+    padding: 10px;
+    font: 16px georgia;
+    border: none;
+    transition: 0.6s;
 }
-input{
-    position:center;
-}
-button [type="submit"]
-{
-    background: #ffc107;
-    position:center;
-    height:30px;
-    width:10%;
-}
+
+    #operator:hover {
+        background: #ed8d0e;
+        color: white;
+    }

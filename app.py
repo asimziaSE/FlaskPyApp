@@ -3,7 +3,7 @@
 
 from services.pbiembedservice import PbiEmbedService
 from utils import Utils
-from flask import Flask, render_template, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request, make_response
 import json
 import os
 
@@ -64,35 +64,47 @@ app = Flask(__name__)
 app.config.from_object('config.BaseConfig')
 @app.route('/operator/')
 def operator():
+    if request.authorization and request.authorization.username == 'operator':
+        return render_template('operator.html')
+    elif request.authorization and request.authorization.username == 'admin' and request.authorization.password == 'admin123':
+        return render_template('operator.html')
+    else:
+        return make_response('Could not verifiy!', 401, {'WWW-Authenticate' : 'Basic realm="Login Required"'})
     return render_template('operator.html')
 @app.route('/admin/')
 def admin():
+    if request.authorization and request.authorization.username == 'admin' and request.authorization.password == 'admin123':
+        return render_template('admin.html')
+    else:
+        return make_response('Could not verifiy!', 401, {'WWW-Authenticate' : 'Basic realm="Login Required"'})
     return render_template('admin.html')
 
 @app.route('/control/', methods=['GET', 'POST'])
 def control():
-
-    if request.method == 'POST':
-        if request.form.get('b1') == 'START':
-            iothub_run('START', 1)
+    if request.authorization and request.authorization.username == 'admin' and request.authorization.password == 'admin123':
+        if request.method == 'POST':
+            if request.form.get('b1') == 'START':
+                iothub_run('START', 1)
             
-        elif  request.form.get('b3') == 'STOP':
-            iothub_run('STOP', 1)
+            elif  request.form.get('b3') == 'STOP':
+                iothub_run('STOP', 1)
     
-        elif  request.form.get('b5') == 'RESET':
-            iothub_run('RESET', 1)
+            elif  request.form.get('b5') == 'RESET':
+                iothub_run('RESET', 1)
            
-        elif  request.form.get('b7') == 'MQ269-FLUSH':
-            iothub_run('MQ269 FLUSH', 1)
+            elif  request.form.get('b7') == 'MQ269-FLUSH':
+                iothub_run('MQ269 FLUSH', 1)
            
-        elif  request.form.get('b8') == 'MQ161-FORWARD':
-            iothub_run('MQ161 FORWARD', 1)
+            elif  request.form.get('b8') == 'MQ161-FORWARD':
+                iothub_run('MQ161 FORWARD', 1)
 
-        elif  request.form.get('b9') == 'MQ157-MANUAL':
-            iothub_run('MQ157 MANUAL', 1)
-        elif  request.form.get('b10') == 'MQ183-AUTOMATIC':
-            iothub_run('MQ183 AUTOMATIC', 1)
-    
+            elif  request.form.get('b9') == 'MQ157-MANUAL':
+                iothub_run('MQ157 MANUAL', 1)
+            elif  request.form.get('b10') == 'MQ183-AUTOMATIC':
+                iothub_run('MQ183 AUTOMATIC', 1)
+            return render_template('control.html')
+    else:
+        return make_response('Could not verifiy!', 401, {'WWW-Authenticate' : 'Basic realm="Login Required"'})
     return render_template('control.html')
 
 @app.route('/', methods=['GET', 'POST'])
