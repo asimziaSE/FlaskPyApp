@@ -7,54 +7,63 @@ from flask import Flask, render_template, send_from_directory, request, make_res
 import json
 import os
 
-import random
-import time
-import sys
+import sys, time
+
 from azure.iot.hub import IoTHubRegistryManager
+from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
 
-#####################################################
-
-MESSAGE_COUNT = 1
-MSG_TXT = "{\"Service Client Hydraulics Update C2D\": %.2f}"
-
-#CONNECTION_STRING = "HostName=ADAM3600.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=ORKd4f9ro76W1M2uTXSp869Mrni7sz+4/gkEC/DuHU0="
-CONNECTION_STRING = "HostName=ADAM3600.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=lsQVvrXgkumu25vlvYczR6BgCNpi1nK9SgykxCpEWlY="
+CONNECTION_STRING = "HostName=ADAM3600.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=ORKd4f9ro76W1M2uTXSp869Mrni7sz+4/gkEC/DuHU0="
 DEVICE_ID = "ADAM-3600"
 
-def iothub_run(dev_str, my_val):
+#METHOD_NAME = "rebootDevice"
+METHOD_NAME = ""
+
+#METHOD_PAYLOAD = "{\"method_number\":\"42\"}"
+METHOD_PAYLOAD = ""
+
+TIMEOUT = 60
+WAIT_COUNT = 10
+
+def iot_invoke_run(METHOD_NAME, METHOD_PAYLOAD ):
     try:
         # Create IoTHubRegistryManager
         registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
 
-        for i in range(0, MESSAGE_COUNT):
+        print ( "" )
+        print ( "Invoking device..." )
 
-            message = 'Device: {} %d'.format(dev_str)
-            print(message)
-            #DUMMY_VAR_BOOL = val
-            print ( 'Sending Beacon: {0}'.format(i) )
-            data = message %(my_val)
-            print ( 'LOGIC STATE: {}'.format(data) )
+        # Call the direct method.
+        deviceMethod = CloudToDeviceMethod(method_name=METHOD_NAME, payload=METHOD_PAYLOAD)
+        response = registry_manager.invoke_device_method(DEVICE_ID, deviceMethod)
 
-            props={}
-            # optional: assign system properties
-            props.update(messageId = "message_%d" % i)
-            props.update(correlationId = "correlation_%d" % i)
-            props.update(contentType = "application/json")
+        print ( "" )
+        print ( "Successfully invoked the device." )
 
-            # optional: assign application properties
-            prop_text = "PropMsg_%d" % i
-            props.update(testProperty = prop_text)
+        print ( "" )
+        print ( response.payload )
 
-            registry_manager.send_c2d_message(DEVICE_ID, data, properties=props)
+        while True:
+            print ( "" )
+            print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
 
+            status_counter = 0
+            while status_counter <= WAIT_COUNT:
+                twin_info = registry_manager.get_twin(DEVICE_ID)
+
+                if twin_info.properties.reported.get("rebootTime") != None :
+                    print ("Get current time: " + twin_info.properties.reported.get("rebootTime"))
+                else:
+                    print ("Waiting for device to invoke...")
+
+                time.sleep(5)
+                status_counter += 1
 
     except Exception as ex:
-        print (ex)
+        print ( "" )
+        print ( "Unexpected error {0}".format(ex) )
         return
 
-
-
-
+        
 #####################################################
 
 # Initialize the Flask app
@@ -84,24 +93,26 @@ def control():
     if request.authorization and request.authorization.username == 'admin' and request.authorization.password == 'admin123':
         if request.method == 'POST':
             if request.form.get('b1') == 'START':
-                iothub_run('START', 1)
-            
+                iot_invoke_run("startInvoke", "\"method_number\":\"1\"}")
+                               
             elif  request.form.get('b3') == 'STOP':
-                iothub_run('STOP', 1)
-    
+                iot_invoke_run("stopInvoke", "\"method_number\":\"2\"}")
+                
             elif  request.form.get('b5') == 'RESET':
-                iothub_run('RESET', 1)
-           
+                iot_invoke_run("resetInvoke", "\"method_number\":\"3\"}")
+                
             elif  request.form.get('b7') == 'MQ269-FLUSH':
-                iothub_run('MQ269 FLUSH', 1)
-           
+                iot_invoke_run("flushInvoke", "\"method_number\":\"4\"}")
+                
             elif  request.form.get('b8') == 'MQ161-FORWARD':
-                iothub_run('MQ161 FORWARD', 1)
-
+                iot_invoke_run("forwardInvoke", "\"method_number\":\"5\"}")
+                
             elif  request.form.get('b9') == 'MQ157-MANUAL':
-                iothub_run('MQ157 MANUAL', 1)
+                iot_invoke_run("manualInvoke", "\"method_number\":\"6\"}")
+
             elif  request.form.get('b10') == 'MQ183-AUTOMATIC':
-                iothub_run('MQ183 AUTOMATIC', 1)
+                iot_invoke_run("automaticInvoke", "\"method_number\":\"7\"}")
+
             return render_template('control.html')
     else:
         return make_response('Could not verifiy!', 401, {'WWW-Authenticate' : 'Basic realm="Login Required"'})
