@@ -1,0 +1,5 @@
+flask
+requests
+msal
+azure-iot-hub
+azure-iot-device
