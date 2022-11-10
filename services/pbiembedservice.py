@@ -1,6 +1,3 @@
-# Copyright (c) Microsoft Corporation.
-# Licensed under the MIT license.
-
 from services.aadservice import AadService
 from models.reportconfig import ReportConfig
 from models.embedtoken import EmbedToken

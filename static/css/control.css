@@ -1,26 +1,31 @@
-/*
-  Copyright (c) Microsoft Corporation.
-  Licensed under the MIT license.
-*/
 body {
-    background-color: #f7f7f2;
+    background-color: #f2f1ed;
 }
 
 h1 {
     width: 100%;
-    background: #4f4d4b;
+    background: none;
     margin-bottom: 0px;
     margin-top: 0px;
     padding-bottom: 10px;
     padding-left: 20px;
     font: 35px copperplate;
 }
+#header {
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: #074151;
+    font: bold 32px roboto;
+    text-transform: uppercase;
+}
 #bk {
     background: none;
     border: none;
-    color: #fcba03;
+    color: #074151;
     margin-left: 20px;
-    margin-top:10px;
+    margin-top: 10px;
 }
 #report-container1 {
     width: 55%;

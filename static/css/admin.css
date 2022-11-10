@@ -1,14 +1,24 @@
 body {
-    background: #f7f1e4;
+    background: #f2f1ed;
 }
 h1 {
     width: 100%;
-    background: #4f4d4b;
+    background: none;
     margin-bottom: 0px;
     margin-top: 0px;
-    padding-bottom: 10px;
+    padding-top:0px;
+    padding-bottom: 0px;
     padding-left: 20px;
     font: 35px copperplate;
+}
+#header {
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom:10px;
+    text-align: center;
+    color: #074151;
+    font: bold 32px roboto;
+    text-transform: uppercase;
 }
 #report-container1{
     margin:0 auto;
@@ -16,7 +26,7 @@ h1 {
 #bk {
     background: none;
     border: none;
-    color: white;
+    color: #074151;
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 10px;
@@ -27,13 +37,15 @@ h1 {
     text-align:center;
 }
 #co {
-    background: none;
-    border-radius: 3px;
-    color: #4f4d4b;
+    width: 220px;
+    margin-top: 5px;
+    background: #757573;
+    border-radius: 1px;
+    color: white;
     padding: 10px;
     font: 16px georgia;
-    border: 3px solid #ed8d0e;
-    transition:0.4s;
+    border: none;
+    transition: 0.6s;
 }
     #co:hover {
         background: #ed8d0e;

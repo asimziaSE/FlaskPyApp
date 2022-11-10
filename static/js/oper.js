@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT license.
-
 $(function () {
     var reportContainer1 = $("#report-container1").get(0);
 

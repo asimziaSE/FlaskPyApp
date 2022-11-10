@@ -1,6 +1,3 @@
-# Copyright (c) Microsoft Corporation.
-# Licensed under the MIT license.
-
 from services.pbiembedservice import PbiEmbedService
 from utils import Utils
 from flask import Flask, render_template, send_from_directory, request, make_response
@@ -73,7 +70,7 @@ app = Flask(__name__)
 app.config.from_object('config.BaseConfig')
 @app.route('/operator/')
 def operator():
-    if request.authorization and request.authorization.username == 'operator':
+    if request.authorization and request.authorization.username == 'operator' and request.authorization.password == 'operator123':
         return render_template('operator.html')
     elif request.authorization and request.authorization.username == 'admin' and request.authorization.password == 'admin123':
         return render_template('operator.html')
